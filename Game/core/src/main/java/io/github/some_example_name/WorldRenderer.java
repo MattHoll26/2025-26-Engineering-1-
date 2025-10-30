@@ -1,12 +1,12 @@
 package io.github.some_example_name;
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.Gdx;
 
 public class WorldRenderer extends ApplicationAdapter {
     /*
@@ -32,7 +32,7 @@ public class WorldRenderer extends ApplicationAdapter {
         camera.setToOrtho(false, MAP_WIDTH, MAP_HEIGHT);
         camera.update();
 
-        tiledMap = new TmxMapLoader().load("Game Map.tmx");
+        tiledMap = new TmxMapLoader().load("Tile Maps/Game Map.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         viewport = new FitViewport(MAP_WIDTH, MAP_HEIGHT, camera);
     }
