@@ -2,4 +2,4 @@
 
 # To-Do:
 - [x] Add FUNCTIONAL Maze
-- [ ] Create Website (Zoey Ahmed)
+- [x] Create Website (Zoey Ahmed)
