@@ -11,6 +11,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 
 public class GameScreen implements Screen {
     private final MyGame game;
@@ -22,6 +25,10 @@ public class GameScreen implements Screen {
 
     private SpriteBatch batch;
     private Player player;
+
+    private BusTicket busTicket;
+    private BitmapFont font;
+    private boolean canPickUpTicket = false;
 
     private final int MAP_WIDTH = 640;
     private final int MAP_HEIGHT = 640;
@@ -41,6 +48,14 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         player = new Player(145, 120); // Player's starting position
+
+        font = new BitmapFont();
+        
+        MapObject ticketObject = tiledMap.getLayers().get("Events").getObjects().get("BusTicket");
+        if (ticketObject != null && ticketObject instanceof RectangleMapObject) {
+            RectangleMapObject rect = (RectangleMapObject) ticketObject;
+            busTicket = new BusTicket(rect.getRectangle().x, rect.getRectangle().y);
+        }
     }
 
     @Override
@@ -49,6 +64,16 @@ public class GameScreen implements Screen {
 
         Gdx.gl.glClearColor(0, 0, 0, 1); // Clear screen to black
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        if (busTicket != null && !busTicket.isCollected()) {
+            // Check distance between player and ticket. 16 is a good radius.
+            if (player.getPosition().dst(busTicket.getPosition()) < 16) {
+                busTicket.discover(); // Make the ticket visible
+                canPickUpTicket = true;
+            } else {
+                canPickUpTicket = false;
+            }
+        }
 
         // Make the camera follow the player
         camera.position.set(player.getPosition().x, player.getPosition().y, 0);
@@ -59,10 +84,22 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+
+        if (busTicket != null) {
+            busTicket.render(batch);
+        }
+        if (canPickUpTicket) {
+            font.draw(batch, "Press E to pick up", player.getPosition().x - 50, player.getPosition().y + 30);
+        }
+
         player.render(batch);
+
+        if (busTicket != null && busTicket.isCollected()) {
+            busTicket.renderAsIcon(batch, camera);
+        }
+
         batch.end();
 
-        // Press ESC to return to the main menu
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(new MenuScreen(game));
         }
@@ -88,6 +125,11 @@ public class GameScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             newX += moveSpeed;
             player.setDirection(Player.Direction.RIGHT);
+        }
+
+        if (canPickUpTicket && Gdx.input.isKeyJustPressed(Input.Keys.E)) {
+            busTicket.collect();
+            canPickUpTicket = false; // Prevent picking it up again
         }
 
         if (!isCellBlocked(newX, newY)) {
@@ -124,6 +166,10 @@ public class GameScreen implements Screen {
         mapRenderer.dispose();
         batch.dispose();
         player.dispose();
+        if (busTicket != null) {
+            busTicket.dispose();
+        }
+        font.dispose();
     }
 
     @Override
