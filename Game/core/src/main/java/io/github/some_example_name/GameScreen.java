@@ -254,14 +254,6 @@ public class GameScreen implements Screen {
 		}
 	}
 
-    public boolean isCellBlocked(float x, float y) {
-        for (int i = 0; i < tiledMap.getLayers().getCount(); i++) {
-            if (tiledMap.getLayers().get(i) instanceof TiledMapTileLayer) {
-                TiledMapTileLayer layer = (TiledMapTileLayer) tiledMap.getLayers().get(i);
-                int tileX = (int) ((x + 8) / layer.getTileWidth());
-                int tileY = (int) ((y + 8) / layer.getTileHeight());
-                TiledMapTileLayer.Cell cell = layer.getCell(tileX, tileY);
-
 	/**
 	 * Returns if the cell at a given coordinate in the world allows an entity
 	 * to move onto it.Useful for checking collisions when moving player or another
