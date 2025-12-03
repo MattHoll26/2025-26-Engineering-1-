@@ -80,7 +80,7 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		player = new Player(145, 70);
 		locker = new Locker(495, 575);
-		dean = new Dean(90, 450, player, this);
+		dean = new Dean(90, 450,     player, this);
 		friend = new NPC(560, 300);
 
 		catchCounterFont = new BitmapFont();
@@ -160,7 +160,7 @@ public class GameScreen implements Screen {
 
 		locker.update(player, delta);
 
-		if (busTicket != null) {
+        if (busTicket != null) {
 		    if (!busTicket.isCollected()) {
 			if (player.getPosition().dst(busTicket.getPosition()) < 16) {
 			    busTicket.discover();
