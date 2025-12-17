@@ -44,11 +44,14 @@ public class GameScreen implements Screen {
 	private final GameTimer gameTimer;
 
 	private BusTicket busTicket;
-	private Locker locker;
+    private Drown drown;
+    private Locker locker;
 	private BitmapFont font;
 	private boolean canPickUpTicket = false;
+    private boolean hasDrowned = false;
 
-	private Rectangle busInteractionArea;
+
+    private Rectangle busInteractionArea;
 	private boolean canEndGame = false;
 
 	private final int MAP_WIDTH = 640;
@@ -74,7 +77,15 @@ public class GameScreen implements Screen {
 
 		tiledMap = new TmxMapLoader().load("Tile Maps/Final Game Map - Maze.tmx");
 
-		mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+        drown = new Drown(
+            tiledMap,
+            "Events", // same object layer as Bus & BusTicket
+            560,      // respawn X (same as dean reset)
+            180       // respawn Y
+        );
+
+
+        mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		viewport = new FitViewport(MAP_WIDTH, MAP_HEIGHT, camera);
 
 		batch = new SpriteBatch();
@@ -99,6 +110,8 @@ public class GameScreen implements Screen {
 		if (busObject != null && busObject instanceof RectangleMapObject) {
 		    this.busInteractionArea = ((RectangleMapObject) busObject).getRectangle();
 		}
+
+
 
 		uiSkin = new Skin(Gdx.files.internal("ui/uiskin.json"));
 		uiStage = new Stage(new FitViewport(MAP_WIDTH, MAP_HEIGHT));
@@ -158,7 +171,11 @@ public class GameScreen implements Screen {
 		    dean.resetToStart(timesCaughtByDean); //send the dean back to his starting position or other side of the map to ensure he can't spawn camp the player
 		}
 
-		locker.update(player, delta);
+        if (drown.update(player)) {
+            hasDrowned = true;
+        }
+
+        locker.update(player, delta);
 
         if (busTicket != null) {
 		    if (!busTicket.isCollected()) {
@@ -202,8 +219,17 @@ public class GameScreen implements Screen {
 		//draw the three events encountered checklists in the top left hand corner of the screen
 		//events get updates using a ternary operator which is like a condensed if/else statement -> it is set out like: (condition ? vali_if_true : value_if_false)
 		font.draw(batch, "Positive Event Encountered = " + (locker.isBoostActive() ? "1" : "0") + "/1", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
-		font.draw(batch, "Negative Event Encountered = " + (timesCaughtByDean > 0 ? "1" : "0") + "/1", 35, 610);
-		font.draw(batch, "Hidden Event Encountered = " + (busTicket.isCollected() ? "1" : "0") + "/1", 35, 590);
+
+        int negativeEvents = 0;
+        if (timesCaughtByDean > 0) negativeEvents += 1;
+        if (hasDrowned) negativeEvents +=1 ;
+
+
+        font.draw(batch, "Negative Event Encountered = " + negativeEvents + "/2" , 35, 610);
+
+        font.draw(batch, "Hidden Event Encountered = " + (busTicket.isCollected() ? "1" : "0") + "/1", 35, 590);
+
+
 
 		//switch back to the game coordinates for game objects
 		batch.setProjectionMatrix(camera.combined);
