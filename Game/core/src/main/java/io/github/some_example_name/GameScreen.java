@@ -46,6 +46,7 @@ public class GameScreen implements Screen {
 	private BusTicket busTicket;
     private Drown drown;
     private Locker locker;
+    private Slow_Down weed;
 	private BitmapFont font;
 	private boolean canPickUpTicket = false;
     private boolean hasDrowned = false;
@@ -91,6 +92,7 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		player = new Player(560, 180);
 		locker = new Locker(495, 895);
+        weed = new Slow_Down(560, 270);
 		dean = new Dean(325, 335,     player, this);
 		friend = new NPC(560, 600);
 
@@ -177,6 +179,7 @@ public class GameScreen implements Screen {
         }
 
         locker.update(player, delta);
+        weed.update(player, delta);
 
         if (busTicket != null) {
 		    if (!busTicket.isCollected()) {
@@ -228,8 +231,9 @@ public class GameScreen implements Screen {
         int negativeEvents = 0;
         if (timesCaughtByDean > 0) negativeEvents++;
         if (hasDrowned) negativeEvents++;
+        if (weed.isBoostActive()) negativeEvents++;
 
-        font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/2" , 35, 610);
+        font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/3" , 35, 610);
 
         int hiddenEvents = 0;
         if (busTicket.isCollected()) hiddenEvents++;
@@ -265,6 +269,7 @@ public class GameScreen implements Screen {
 
 		//Messages will appear on top by rendering player last.
 		locker.render(batch);
+        weed.render(batch);
 		dean.render(batch);
 		friend.render(batch);
 		player.render(batch);
@@ -311,6 +316,9 @@ public class GameScreen implements Screen {
         float moveSpeed = 1f;
         if (locker != null && locker.isBoostActive()) {
             moveSpeed = 2f;
+        }
+        if (weed != null && weed.isBoostActive()) {
+            moveSpeed = 0.5f;
         }
 
         float newX = player.getPosition().x;
@@ -464,6 +472,7 @@ public class GameScreen implements Screen {
 		batch.dispose();
 		player.dispose();
 		locker.dispose();
+        weed.dispose();
 		font.dispose();
 		uiStage.dispose();
 		dean.dispose();
