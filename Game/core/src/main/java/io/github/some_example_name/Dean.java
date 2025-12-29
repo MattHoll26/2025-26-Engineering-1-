@@ -45,7 +45,7 @@ public class Dean {
 		float newX = position.x + direction.x * speed;
 		float newY = position.y + direction.y * speed;
 
-		if(!gameScreen.isCellBlocked(newX, newY)) {
+		if(!gameScreen.isCellBlockedForDean(newX, newY)) {
 		    position.set(newX, newY);
 		}
 
@@ -60,13 +60,13 @@ public class Dean {
 	 */
 	private void tryMoveDiagonally(float delta, Vector2 direction){
 		float newX = position.x + direction.x * speed;
-		if(!gameScreen.isCellBlocked(newX, position.y)) {
+		if(!gameScreen.isCellBlockedForDean(newX, position.y)) {
 		    position.x = newX;
 		    return;
 		}
 
 		float newY = position.y + direction.y * speed;
-		 if(!gameScreen.isCellBlocked(position.x, newY)) {
+		 if(!gameScreen.isCellBlockedForDean(position.x, newY)) {
 		    position.y = newY;
 		    return;
 		}

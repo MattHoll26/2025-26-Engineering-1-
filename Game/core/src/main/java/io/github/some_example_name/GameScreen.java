@@ -448,6 +448,27 @@ public class GameScreen implements Screen {
         return false;
     }
 
+    // Only Dean treats doors as blocked
+    public boolean isCellBlockedForDean(float x, float y) {
+        for (int i = 0; i < tiledMap.getLayers().getCount(); i++) {
+            if (tiledMap.getLayers().get(i) instanceof TiledMapTileLayer) {
+                TiledMapTileLayer layer = (TiledMapTileLayer) tiledMap.getLayers().get(i);
+                int tileX = (int) ((x + 8) / layer.getTileWidth());
+                int tileY = (int) ((y + 8) / layer.getTileHeight());
+                TiledMapTileLayer.Cell cell = layer.getCell(tileX, tileY);
+
+                if (cell != null && cell.getTile() != null) {
+                    if (layer.getProperties().containsKey("collidable") ||
+                        layer.getProperties().containsKey("door")) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
     /**
      * Calculate the player's final score
      */
