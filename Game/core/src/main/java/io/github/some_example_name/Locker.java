@@ -19,6 +19,7 @@ public class Locker {
 	private Vector2 position;
 	private Rectangle bounds;
 	private boolean searched = false;
+    private boolean lockerSearched = false;
 	private boolean showMessage = false;
 	private float messageTimer = 0f;
 	private final float messageDuration = 5f;
@@ -49,6 +50,7 @@ public class Locker {
 		if (!searched && Gdx.input.isKeyJustPressed(Input.Keys.E)){
 		    if (player.getPosition().dst(position) < 50f) {
 			searched = true;
+            lockerSearched = true;
 			showMessage = true;
 			messageTimer = 0f;
 			speedBoostTimer = speedBoostDuration;
@@ -103,4 +105,6 @@ public class Locker {
 	public boolean isBoostActive() {
 		return speedBoostTimer > 0;
 	}
+
+    public boolean lockerSearched() {return lockerSearched; }
 }

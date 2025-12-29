@@ -46,7 +46,8 @@ public class GameScreen implements Screen {
 	private BusTicket busTicket;
     private Drown drown;
     private Locker locker;
-    private Slow_Down weed;
+    private Slow_Down bush;
+    private Decrease_Time tree;
 	private BitmapFont font;
 	private boolean canPickUpTicket = false;
     private boolean hasDrowned = false;
@@ -92,7 +93,8 @@ public class GameScreen implements Screen {
 		batch = new SpriteBatch();
 		player = new Player(560, 180);
 		locker = new Locker(495, 895);
-        weed = new Slow_Down(560, 270);
+        bush = new Slow_Down(560, 270);
+        tree = new Decrease_Time(270, 9);
 		dean = new Dean(325, 335,     player, this);
 		friend = new NPC(560, 600);
 
@@ -179,7 +181,8 @@ public class GameScreen implements Screen {
         }
 
         locker.update(player, delta);
-        weed.update(player, delta);
+        bush.update(player, delta);
+        tree.update(player, gameTimer, delta);
 
         if (busTicket != null) {
 		    if (!busTicket.isCollected()) {
@@ -224,16 +227,17 @@ public class GameScreen implements Screen {
 		//events get updates using a ternary operator which is like a condensed if/else statement -> it is set out like: (condition ? vali_if_true : value_if_false)
 
         int positiveEvents = 0;
-        if (locker.isBoostActive()) positiveEvents++;
+        if (locker.lockerSearched()) positiveEvents++;
 
 		font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/1", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
 
         int negativeEvents = 0;
         if (timesCaughtByDean > 0) negativeEvents++;
         if (hasDrowned) negativeEvents++;
-        if (weed.isBoostActive()) negativeEvents++;
+        if (bush.bushFall()) negativeEvents++;
+        if (tree.hitTree()) negativeEvents++;
 
-        font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/3" , 35, 610);
+        font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/4" , 35, 610);
 
         int hiddenEvents = 0;
         if (busTicket.isCollected()) hiddenEvents++;
@@ -269,7 +273,8 @@ public class GameScreen implements Screen {
 
 		//Messages will appear on top by rendering player last.
 		locker.render(batch);
-        weed.render(batch);
+        bush.render(batch);
+        tree.render(batch);
 		dean.render(batch);
 		friend.render(batch);
 		player.render(batch);
@@ -317,7 +322,7 @@ public class GameScreen implements Screen {
         if (locker != null && locker.isBoostActive()) {
             moveSpeed = 2f;
         }
-        if (weed != null && weed.isBoostActive()) {
+        if (bush != null && bush.isBoostActive()) {
             moveSpeed = 0.5f;
         }
 
@@ -472,7 +477,7 @@ public class GameScreen implements Screen {
 		batch.dispose();
 		player.dispose();
 		locker.dispose();
-        weed.dispose();
+        bush.dispose();
 		font.dispose();
 		uiStage.dispose();
 		dean.dispose();

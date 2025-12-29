@@ -22,6 +22,7 @@ public class Slow_Down {
     private Rectangle bounds;
     private boolean searched = false;
     private boolean showMessage = false;
+    private boolean fallen = false;
     private float messageTimer = 0f;
     private final float messageDuration = 5f;
     private final float speedBoostAmount = -200f;
@@ -52,6 +53,7 @@ public class Slow_Down {
             if (player.getPosition().dst(position) < 50f) {
                 searched = true;
                 showMessage = true;
+                fallen = true;
                 messageTimer = 0f;
                 speedBoostTimer = speedBoostDuration;
             }
@@ -105,4 +107,7 @@ public class Slow_Down {
     public boolean isBoostActive() {
         return speedBoostTimer > 0;
     }
-}
+
+    public boolean bushFall() {return fallen; }
+    }
+
