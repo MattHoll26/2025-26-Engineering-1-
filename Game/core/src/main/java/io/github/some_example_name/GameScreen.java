@@ -284,7 +284,7 @@ public class GameScreen implements Screen {
         if (extraTime.gainedTime()) positiveEvents++;
         if (freezeDean.isUsed()) positiveEvents++;
 
-        font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/2", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
+        font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/3", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
 
         int negativeEvents = 0;
         if (timesCaughtByDean > 0) negativeEvents++;
@@ -293,14 +293,14 @@ public class GameScreen implements Screen {
         if (bush.bushFall()) negativeEvents++;
         if (tree.hitTree()) negativeEvents++;
 
-        font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/4" , 35, 610);
         font.draw(batch, "Negative Events Encountered = " + negativeEvents + "/5" , 35, 610);
 
         int hiddenEvents = 0;
         if (busTicket.isCollected()) hiddenEvents++;
         if (labEquipment.teleportHappened()) hiddenEvents++;
+        if (questionnaire.isAnswered()) hiddenEvents++;
 
-        font.draw(batch, "Hidden Events Encountered = " + hiddenEvents + "/2", 35, 590);
+        font.draw(batch, "Hidden Events Encountered = " + hiddenEvents + "/3", 35, 590);
 
 
 
@@ -543,7 +543,8 @@ public class GameScreen implements Screen {
     public int calculateTotalPenalty() {
         int deanPenalty = timesCaughtByDean * 5;
         int drownedPenalty = timesDrowned * 10;
-        return deanPenalty + drownedPenalty;
+        int patrolDeanPenalty = timesCaughtByPatrol * 5;
+        return deanPenalty + drownedPenalty + patrolDeanPenalty;
     }
 
 
@@ -567,6 +568,7 @@ public class GameScreen implements Screen {
     public int getTimesCaughtByDean() {
         return timesCaughtByDean;
     }
+
 
     /**
      * Dipose of all assets and UI elements when game screen is left i.e
