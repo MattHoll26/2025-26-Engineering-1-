@@ -69,6 +69,8 @@ public class GameScreen implements Screen {
 
     private Questionnaire questionnaire;
 
+    private Freeze_Dean freezeDean;
+
     private NPC friend;
     private int timesCaughtByDean = 0;
     private int timesCaughtByPatrol = 0;
@@ -99,6 +101,11 @@ public class GameScreen implements Screen {
         questionnaire = new Questionnaire(
             tiledMap,
             "Events" // same object layer as Bus & BusTicket and Drown
+        );
+
+        freezeDean = new Freeze_Dean(
+            tiledMap,
+            "Events"
         );
 
 
@@ -229,6 +236,8 @@ public class GameScreen implements Screen {
             questionnaire.update(player, this);
         }
 
+        freezeDean.update(player, this);
+
 
         if (busTicket != null) {
             if (!busTicket.isCollected()) {
@@ -273,6 +282,7 @@ public class GameScreen implements Screen {
         int positiveEvents = 0;
         if (locker.lockerSearched()) positiveEvents++;
         if (extraTime.gainedTime()) positiveEvents++;
+        if (freezeDean.isUsed()) positiveEvents++;
 
         font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/2", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
 
@@ -339,6 +349,8 @@ public class GameScreen implements Screen {
         if (questionnaire != null) {
             questionnaire.render(batch, font);
         }
+
+        freezeDean.render(batch, font);
 
 
         player.render(batch);
@@ -591,6 +603,14 @@ public class GameScreen implements Screen {
         if (extraDean != null) {
             extraDean.setSpeed(0f);
         }
+    }
+
+    public void unfreezeDeans() {
+        dean.setSpeed(0.7f);
+        patrolDean1.setSpeed(0.7f);
+        patrolDean2.setSpeed(0.7f);
+        patrolDean3.setSpeed(0.7f);
+        if (extraDean != null) extraDean.setSpeed(0.7f);
     }
 
     public void spawnSecondDean() {
