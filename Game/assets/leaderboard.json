@@ -1,7 +1,28 @@
 [
 {
 	class: io.github.some_example_name.Save_Leaderboard$ScoreEntry
-	fullName: ABDUL FOFANAH
-	score: 692
+	fullName: FOFANAH
+	score: 753
 }
+{
+  class: io.github.some_example_name.Save_Leaderboard$ScoreEntry
+  fullName: ABDUL, FOFANAH
+  score: 751
+}
+{
+  class: io.github.some_example_name.Save_Leaderboard$ScoreEntry
+  fullName: ABDUL
+  score: 692
+}
+{
+  class: io.github.some_example_name.Save_Leaderboard$ScoreEntry
+  fullName: MATT
+  score: 441
+}
+{
+  class: io.github.some_example_name.Save_Leaderboard$ScoreEntry
+  fullName: ABDUL TEST
+  score: 441
+}
+
 ]

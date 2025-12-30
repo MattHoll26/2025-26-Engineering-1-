@@ -37,11 +37,11 @@ public class LeaderboardScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        font.draw(batch, "LEADERBOARD --> TOP 10", 150, 450);
+        font.draw(batch, "LEADERBOARD --> TOP 5", 150, 450);
         font.draw(batch, "SPACE or ENTER --> Back to Menu | ESC --> Quit", 100, 420);
 
         Array<Save_Leaderboard.ScoreEntry> highScores = leaderboard.getHighScores();
-        for (int i = 0; i < highScores.size && i < 10; i++) {
+        for (int i = 0; i < highScores.size && i < 5; i++) {
             Save_Leaderboard.ScoreEntry individualScore = highScores.get(i);
             font.draw(batch, (i+1) + ". " + individualScore.fullName + " - " + individualScore.score, 100, 380 - i * 30);
         }
