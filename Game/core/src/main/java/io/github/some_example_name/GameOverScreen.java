@@ -20,10 +20,11 @@ public class GameOverScreen implements Screen {
     private BitmapFont font;
 
     /**
-     * Constructor for <code> GameOverScreen </code> using the game creator in 
-     * <MyGame </code> to create the game over screen
-     * @param game Game creator
+     * Constructor for <code>GameOverScreen</code>, using the game creator
+     * in <code>MyGame</code> to create the game over screen.
+     * @param game Game creator.
      */
+
 
     public GameOverScreen(MyGame game) {
         this.game = game;
@@ -39,7 +40,7 @@ public class GameOverScreen implements Screen {
     /**
      * Procces input then render thew new frame for the game over screen
      * @param delta Time in seconds since the last frame finished rendering
-     * @see com.badlogic,gdx.Screen#render Screen.render()
+     * @see com.badlogic.gdx.Screen#render Screen.render().
      */
 
     @Override
