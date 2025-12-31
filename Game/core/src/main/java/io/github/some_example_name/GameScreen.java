@@ -390,7 +390,8 @@ public class GameScreen implements Screen {
 
         // Hidden events hunter --> Collected ticket and used teleporter
         if (busTicket != null && busTicket.isCollected() &&
-            labEquipment != null && labEquipment.teleportHappened()) {
+            labEquipment != null && labEquipment.teleportHappened() &&
+            questionnaire != null && questionnaire.isAnswered()) {
             earnedAchievement.add(new Achievement("Secret Hunter", "Found all hidden events", 100));
         }
 

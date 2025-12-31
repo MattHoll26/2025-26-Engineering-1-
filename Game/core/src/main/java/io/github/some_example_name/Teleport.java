@@ -64,7 +64,7 @@ public class Teleport {
         if (showMessage && !teleportHappened) {
             countdownTimer += delta;
             if (countdownTimer >= 3.6f) {
-                Vector2 newPos = getRandomSafePosition(player.currentFrame.getRegionWidth(), player.currentFrame.getRegionHeight());
+                Vector2 newPos = getRandomSafePosition();
                 player.getPosition().set(newPos);
                 teleportHappened = true;
             }
@@ -77,30 +77,22 @@ public class Teleport {
         }
     }
 
-    private Vector2 getRandomSafePosition(float playerWidth, float playerHeight) {
-        Vector2 pos = new Vector2();
-        int attempts = 0;
+    private Vector2 getRandomSafePosition() {
+        // Specifc map locations
+        Vector2[] safeSpots = new Vector2[] {
+            new Vector2(560, 180),
+            new Vector2(300, 300),
+            new Vector2(150, 400),
+            new Vector2(450, 100),
+            new Vector2(360, 250),
+            new Vector2(50, 200)
+        };
 
-        float mapWidth = 640;
-        float mapHeight = 640;
+        // Random spot
+        int index = MathUtils.random(0, safeSpots.length - 1);
 
-        do {
-            float x = MathUtils.random(0, mapWidth - playerWidth);
-            float y = MathUtils.random(0, mapHeight - playerHeight);
-            attempts++;
-
-            if (!gameScreen.isCellBlocked(x, y)) {
-                pos.set(x, y);
-                break;
-            }
-        } while (attempts < 500);
-
-
-        if (pos.isZero()) {
-            pos.set(560, 180);
-        }
-
-        return pos;
+        // Return a new copy
+        return new Vector2(safeSpots[index]);
     }
 
     /**
@@ -145,5 +137,7 @@ public class Teleport {
      * Return if the teleport has happened for updating the counter
      * @return True/False value.
      */
-    public boolean teleportHappened() {return teleportHappened; }
+    public boolean teleportHappened() {
+        return teleportHappened;
+    }
 }
