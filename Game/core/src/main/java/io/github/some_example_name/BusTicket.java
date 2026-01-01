@@ -77,7 +77,7 @@ public class    BusTicket {
 
 	/**
 	 * Return if the ticket has been collected by player or not.
-	 * @return True/False value corrosponding to if ticket is collected.
+	 * @return True/False value corresponding to if ticket is collected.
 	 */
 	public boolean isCollected() {
 		return isCollected;

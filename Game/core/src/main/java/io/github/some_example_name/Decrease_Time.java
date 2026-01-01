@@ -75,8 +75,8 @@ public class Decrease_Time {
 
     /**
      * Convenience method to be called by the game screen's <code> render()
-     * </code> method, to draw the tree and it's label using a
-     * SpriteBatch at it's coordinates.
+     * </code> method, to draw the tree, and it's label using a
+     * SpriteBatch at its coordinates.
      * @param batch SpriteBatch used by application to render all sprites.
      * @see com.badlogic.gdx.graphics.g2d.SpriteBatch SpriteBatch
      * @see com.badlogic.gdx.Screen#render Screen.render().

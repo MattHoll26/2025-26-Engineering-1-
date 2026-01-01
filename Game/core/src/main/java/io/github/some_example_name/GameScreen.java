@@ -310,7 +310,7 @@ public class GameScreen implements Screen {
         if (extraTime.gainedTime()) positiveEvents++;
         if (freezeDean.isUsed()) positiveEvents++;
 
-        font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/3", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been enocuntered otherwide 0/1
+        font.draw(batch, "Positive Events Encountered = " + positiveEvents + "/3", 35, 630);//this means if the locker boost is active (the bus ticket has been picked up) display that the event 1/1 has been encountered otherwise 0/1
 
         int negativeEvents = 0;
         if (timesCaughtByDean > 0) negativeEvents++;
@@ -477,7 +477,7 @@ public class GameScreen implements Screen {
 
     /**
      * Move the player and interacting with the world and menus every frame when
-     * the corrosponding keys are pressed:
+     * the corresponding keys are pressed:
      * <ul>
      * <li> WASD - Move Character Up/Left/Down/Right.</li>
      * <li> E - Interact with items.</li>
@@ -556,7 +556,7 @@ public class GameScreen implements Screen {
 
             String playerName = game.getPlayerFullName(); // get the full player name for the leaderboard
             Save_Leaderboard leaderboard = new Save_Leaderboard();
-            leaderboard.addScore(playerName, finalScore); // add score to the leaderboard if its in the top scores
+            leaderboard.addScore(playerName, finalScore); // add score to the leaderboard if it is in the top scores
             game.setScreen(new WinScreen(game, finalScore, timeRemaining, totalPenalty, achievements));
         }
 
@@ -703,8 +703,8 @@ public class GameScreen implements Screen {
     }
 
     /**
-     * Dispose of all assets and UI elements when game screen is left i.e
-     * when the player wins the game or quits.
+     * Dispose of all assets and UI elements when game screen is left.
+     * For example. when the player wins the game or quits.
      * @see com.badlogic.gdx.Screen#dispose Screen.dispose().
      */
     @Override

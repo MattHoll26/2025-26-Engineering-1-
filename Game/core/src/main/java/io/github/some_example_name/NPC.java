@@ -58,7 +58,7 @@ public class NPC {
 
 	/**
 	 * Convenience method to be called by the game screen's <code> render()
-	 * </code> method, to draw the NPC's sprite and it's dialog using a
+	 * </code> method, to draw the NPC's sprite, and it's dialog using a
 	 * SpriteBatch at the current player coordinates.
 	 * @param batch SpriteBatch used by application to render all sprites.
 	 * @see com.badlogic.gdx.graphics.g2d.SpriteBatch SpriteBatch

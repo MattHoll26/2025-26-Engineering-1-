@@ -64,10 +64,10 @@ public class GameTimer {
 	/**
 	 * Decrements timer by given value, or to 0 if the new value will be a
 	 * negative number.
-	 * @param decrementaion Value to reduce the timer by, in seconds, ideally sourced from {@link com.badlogic.gdx.Graphics#getRawDeltaTime()}.
+	 * @param decrementation Value to reduce the timer by, in seconds, ideally sourced from {@link com.badlogic.gdx.Graphics#getRawDeltaTime()}.
 	 */
-	public void decrementTimer(float decrementaion) {
-		this.timeLeft = Math.max(0, timeLeft - decrementaion);
+	public void decrementTimer(float decrementation) {
+		this.timeLeft = Math.max(0, timeLeft - decrementation);
 		this.timerLabel.setText(this.toString());
 	}
 

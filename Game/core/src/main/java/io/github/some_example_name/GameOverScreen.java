@@ -38,7 +38,7 @@ public class GameOverScreen implements Screen {
     }
 
     /**
-     * Procces input then render thew new frame for the game over screen
+     * Process input then render thew new frame for the game over screen
      * @param delta Time in seconds since the last frame finished rendering
      * @see com.badlogic.gdx.Screen#render Screen.render().
      */
@@ -62,7 +62,7 @@ public class GameOverScreen implements Screen {
     }
 
     /**
-     * Dispose game over screen assests when the screen is exited
+     * Dispose game over screen assists when the screen is exited
      * @see com.badlogic.gdx.Screen#dispose Screen.dispose()
      */
     @Override
