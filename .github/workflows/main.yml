@@ -1,4 +1,4 @@
-# NEW for Assessment 2: Continuous Integration workflow for build, tests, coverage and packaging
+# NEW for Assessment 2: Continuous Integration workflow for the build, tests, coverage and packaging
 name: LibGDX Java CI with Gradle
 
 on:
