@@ -19,6 +19,7 @@ public class    BusTicket {
 	private boolean isDiscovered; // To control when it becomes visible
 
 	/**
+     * UNCHANGED
 	 * Constructor for <code> BusTicket </code>, spawning the ticket sprite
 	 * in the given world coordinates.Uses "bus-ticket.png" in
 	 * <code> assets/ </code> folder for sprite.
@@ -33,6 +34,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Render ticket sprite within given sprite batch.
 	 * @param batch SpriteBatch to render world sprite in.
 	 * @see com.badlogic.gdx.graphics.g2d.SpriteBatch SpriteBatch.
@@ -44,6 +46,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Render ticket collected UI element, to signify the ticket is in user
 	 * inventory.
 	 * @param batch SpriteBatch to render UI sprite in.
@@ -70,6 +73,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Return ticket position as a 2D Vector.
 	 * @return 2D Vector with x/y positions of ticket.
 	 */
@@ -78,6 +82,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * EXTENDED JAVADOC
 	 * Return if the ticket has been collected by player or not.
 	 * @return True/False value corresponding to if ticket is collected.
 	 */
@@ -86,6 +91,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Set ticket collection to true.
 	 */
 	public void collect() {
@@ -93,6 +99,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Set ticket being discovered by player to true.
 	 */
 	public void discover() {
@@ -100,6 +107,7 @@ public class    BusTicket {
 	}
 
 	/**
+     * UNCHANGED
 	 * Dispose ticket sprite texture.Use as part of
 	 * Application dispose method.
 	 */

@@ -22,6 +22,7 @@ public class Dean {
 	private float speed = 0.7f;
 
 	/**
+     * UNCHANGED
 	 * Constructor for <code> Dean </code>, with a set of coordinates.
 	 * @param x Horizontal position for dean to spawn in.
 	 * @param y Vertical position for dean to spawn in.
@@ -48,6 +49,7 @@ public class Dean {
     }
 
     /**
+     * NEW
      * Return the current movement speed of the dean.
      * @return Current speed value.
      */
@@ -56,6 +58,7 @@ public class Dean {
     }
 
 	/**
+     * UNCHANGED
 	 * Update position of dean to get closer to player's new position.
 	 * @param delta Time elapsed since last update.
 	 */
@@ -74,6 +77,7 @@ public class Dean {
 	}
 
 	/**
+     * UNCHANGED
 	 * Attempt to move dean diagonally towards player if moving
 	 * in a straight line is not possible.
 	 * @param delta Time elapsed since last update.
@@ -94,6 +98,7 @@ public class Dean {
 	}
 
     /**
+     * EXTENDED JAVADOC
      * Reset the dean to its starting position when the player is caught,
      * or move it to an alternative position to avoid spawn camping.
      *

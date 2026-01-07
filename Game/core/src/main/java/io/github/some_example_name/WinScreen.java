@@ -105,6 +105,7 @@ public class WinScreen implements Screen {
 	}
 
    	/**
+     * UNCHANGED
 	 * Dispose win menu assets when menu is exited or program is quit.
 	 * @see com.badlogic.gdx.Screen#dispose Screen.dispose().
 	 */

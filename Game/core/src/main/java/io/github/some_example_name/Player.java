@@ -40,6 +40,7 @@ public class Player
 	public TextureRegion currentFrame;
 
 	/**
+     * UNCHANGED
 	 * Constructor for <code> Player </code>, with a set of coordinates.
 	 * @param x Horizontal position for player to spawn in.
 	 * @param y Vertical position for player to spawn in.
@@ -60,6 +61,7 @@ public class Player
 	}
 
 	/**
+     * UNCHANGED
 	 * Called to set the direction of the Player sprite.
 	 * @param newDirection the direction the player should face.
 	 * @see Direction Direction.
@@ -92,6 +94,7 @@ public class Player
 	}
 
 	/**
+     * UNCHANGED
 	 * Convenience method to be called by the game screen's <code> render()
 	 * </code> method, to draw the player using a SpriteBatch at the current
 	 * player coordinates.
@@ -105,6 +108,7 @@ public class Player
 	}
 
 	/**
+     * UNCHANGED
 	 * Get the player's position in world.
 	 * @return The players x-by-y coordinates as a 2D vector.
 	 */
@@ -114,6 +118,7 @@ public class Player
 	}
 
 	/**
+     * UNCHANGED
 	 * Convenience method to be called by application to dispose of textures
 	 * of player's sprites when the application's dispose method is called.
 	 * @see com.badlogic.gdx.Screen#dispose Screen.dispose().

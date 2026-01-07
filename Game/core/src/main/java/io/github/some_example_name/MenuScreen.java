@@ -29,6 +29,7 @@ public class MenuScreen implements Screen {
 
 
     /**
+     * UNCHANGED
      * Constructor for <code> MenuScreen </code>, using the game creator in
      * <code> MyGame </code> to create menu screen.
      * @param game Game creator.
@@ -47,12 +48,14 @@ public class MenuScreen implements Screen {
     }
 
     /**
+     * UNCHANGED
      * Show main menu screen.
      */
     @Override
     public void show() {}
 
     /**
+     * UNCHANGED
      * Process input then render new frame for the main menu.
      * @param delta Time in seconds since last frame finished rendering.
      * @see com.badlogic.gdx.Screen#render Screen.render().
@@ -92,6 +95,7 @@ public class MenuScreen implements Screen {
     }
 
     /**
+     * UNCHANGED
      * Dispose menu assets when menu is exited or program is quit.
      * @see com.badlogic.gdx.Screen#dispose Screen.dispose().
      */

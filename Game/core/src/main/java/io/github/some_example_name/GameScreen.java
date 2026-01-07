@@ -590,6 +590,7 @@ public class GameScreen implements Screen {
     }
 
     /**
+     * EXTENDED JAVADOC
      * Returns if the cell at a given coordinate in the world allows an entity
      * to move onto it. Useful for checking collisions when moving player or another
      * entity.
@@ -730,6 +731,7 @@ public class GameScreen implements Screen {
 
 
     /**
+     * UNCHANGED
      * Resize UI and game map viewports when the window size is changed.
      * @param width Current width of window.
      * @param height Current height of window.
@@ -744,6 +746,7 @@ public class GameScreen implements Screen {
     }
 
     /**
+     * EXTENDED JAVADOC
      * Get the number of times the player is caught by the Dean
      *
      * @return Number of times caught by the dean

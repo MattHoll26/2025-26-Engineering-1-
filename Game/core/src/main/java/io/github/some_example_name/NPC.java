@@ -27,6 +27,7 @@ public class NPC {
                             "How are you in 2 places at once!!!\nMaybe check the deans office?"};
     private String currentLine;
 	/**
+     * UNCHANGED
 	 * Constructor for <code> NPC </code>, with a set of coordinates.
 	 * @param x Horizontal position for NPC to spawn in.
 	 * @param y Vertical position for NPC to spawn in.
@@ -61,6 +62,7 @@ public class NPC {
 	}
 
 	/**
+     * EXTENDED
 	 * Convenience method to be called by the game screen's <code> render()
 	 * </code> method, to draw the NPC's sprite, and it's dialog using a
 	 * SpriteBatch at the current player coordinates.
@@ -79,6 +81,7 @@ public class NPC {
 	}
 
 	/**
+     * UNCHANGED
 	 * Convenience method to be called by application to dispose of textures
 	 * of NPC's sprites and dialog when the application's dispose method is called.
 	 * @see com.badlogic.gdx.Screen#dispose Screen.dispose().
@@ -89,6 +92,7 @@ public class NPC {
 	}
 
 	/**
+     * UNCHANGED
 	 * Get the NPC's position in world.
 	 * @return The players x-by-y coordinates as a 2D vector.
 	 */
@@ -97,6 +101,7 @@ public class NPC {
 	}
 
 	/**
+     * UNCHANGED
 	 * Get NPC's collision box.
 	 * @return Rectangle bounds of NPC.
 	 */
