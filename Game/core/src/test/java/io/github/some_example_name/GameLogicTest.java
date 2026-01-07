@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameLogicTest {
     /**
      * NEW:
-     * Tests the mathematical "floor" logic of 0 for the player scoring.
+     * Tests the mathematical floor logic of 0 for the player scoring.
      * This ensures that the penalties do not result in a negative score value,
      * satisfying requirement FR_END_SCORE.
      */
