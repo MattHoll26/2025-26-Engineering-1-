@@ -1,5 +1,5 @@
 title: My Website
-theme: midnight
+theme: jekyll-theme-midnight
 
 nav:
   - Home: index.md
