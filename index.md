@@ -1,7 +1,5 @@
----
-title: Home
----
+# Welcome to University
 
-# Welcome to My Website
+# Contributors
 
-This is my new homepage. Edit this text to customize your site.
+# File Links
