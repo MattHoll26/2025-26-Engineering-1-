@@ -47,6 +47,9 @@ configure(subprojects) {
   test {
     useJUnitPlatform()
 
+    // Suppress JVM warnings
+    jvmArgs '-Xshare:off'
+
     testLogging{
       events "passed","skipped","failed","standardOut","standardError"
       exceptionFormat = "full"
